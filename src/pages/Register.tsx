@@ -123,6 +123,14 @@ const Register: React.FC = () => {
             Create Account
           </button>
         </form>
+
+        {/* Extra navigation option */}
+        <p className="text-center text-sm mt-4 text-gray-600">
+          Already have an account?{" "}
+          <a href="/login" className="text-purple-600 font-semibold hover:underline">
+            Login
+          </a>
+        </p>
       </div>
     </div>
   );

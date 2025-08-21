@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Camera } from "lucide-react";
+import { Camera, LogOut } from "lucide-react";
 
 interface UserData {
   fullName: string;
@@ -39,6 +39,13 @@ const Account: React.FC = () => {
     }
   }, []);
 
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("profilePic");
+    alert("You have been logged out!");
+    window.location.href = "/login"; // redirect to login
+  };
+
   if (!user) {
     return <p className="text-center mt-10">No user data found. Please login.</p>;
   }
@@ -46,18 +53,21 @@ const Account: React.FC = () => {
   return (
     <div className="flex justify-center items-start min-h-screen bg-white py-10">
       <div className="w-full max-w-md border rounded-lg bg-gray-50 p-6 shadow">
-        <h2 className="text-lg font-semibold border-b pb-3 mb-4">
-          Account Settings
-        </h2>
+        <div className="flex justify-between items-center border-b pb-3 mb-4">
+          <h2 className="text-lg font-semibold">Account Settings</h2>
+          <button
+            onClick={handleLogout}
+            className="flex items-center gap-1 text-sm text-red-600 hover:text-red-800 font-medium"
+          >
+            <LogOut size={16} /> Logout
+          </button>
+        </div>
 
         {/* Profile Section */}
         <div className="flex items-center space-x-4 mb-4">
           <div className="relative">
             <img
-              src={
-                profilePic ||
-                "https://via.placeholder.com/80x80.png?text=User"
-              }
+              src={profilePic || "https://via.placeholder.com/80x80.png?text=User"}
               alt="Profile"
               className="w-16 h-16 rounded-full object-cover border"
             />

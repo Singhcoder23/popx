@@ -63,6 +63,14 @@ const Login: React.FC = () => {
             Login
           </button>
         </form>
+
+        {/* Extra navigation option */}
+        <p className="text-center text-sm mt-4 text-gray-600">
+          Don’t have an account?{" "}
+          <a href="/register" className="text-purple-600 font-semibold hover:underline">
+            Register now
+          </a>
+        </p>
       </div>
     </div>
   );
